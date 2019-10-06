@@ -15,17 +15,17 @@ html
         title Natours | Exciting tours for adventurous people
         
 
-  body
-  // HEADER
-  include _header
-  
+  body(data-alert=`${alert ? alert : ''}`)
+    // HEADER
+    include _header
+    
 
-  // CONTENT
-  block content 
-    h1 This is a placeholder heading
-  
-  // FOOTER
-  include _footer
+    // CONTENT
+    block content 
+      h1 This is a placeholder heading
+    
+    // FOOTER
+    include _footer
 
-  script(src='https://js.stripe.com/v3')
-  script(src='/js/bundle.js')
+    script(src='https://js.stripe.com/v3')
+    script(src='/js/bundle.js')
