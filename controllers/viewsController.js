@@ -65,3 +65,16 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
     tours
   });
 });
+
+// INFORMATIONAL PAGES
+exports.about = (req, res) => {
+  res.status(200).render('about', {
+    title: 'About'
+  });
+};
+
+exports.contact = (req, res) => {
+  res.status(200).render('contact', {
+    title: 'Contact'
+  });
+};
