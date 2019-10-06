@@ -20,11 +20,13 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     cancel_url: `${req.protocol}://${req.get('host')}/tours/${tour.slug}`,
     customer_email: req.user.email,
     client_reference_id: req.params.tourID,
-    line_items: [
+    display_items: [
       {
         name: `${tour.name} Tour`,
         description: tour.summary,
-        images: [`https://www.natours.dev/img/tours/${tour.imageCover}`],
+        images: [
+          `${req.protocol}://${req.get('host')}/tours/${tour.imageCover}`
+        ],
         amount: tour.price * 100,
         currency: 'usd',
         quantity: 1
@@ -55,7 +57,7 @@ const createBookingCheckout = async session => {
 
   const user = (await User.findOne({ email: session.customer_email })).id;
 
-  const price = session.line_items[0].amount / 100;
+  const price = session.display_items[0].amount / 100;
 
   await Booking.create({ tour, user, price });
 };
