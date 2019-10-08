@@ -80,22 +80,23 @@ block content
     .reviews
       each review in tour.reviews
         +reviewCard(review)
-    .add-review
-      form.review-form
-        h2.heading-secondary-alt Add a Review
-        .form__group
-          label.form__label(for='email') Your Review
-          textarea#review.form__input
-        .form__group 
-          label.form__label(for='rating') Your Rating
-          select#review-rating__select
-            option(value=1) 1
-            option(value=2) 2
-            option(value=3) 3
-            option(value=4) 4
-            option(value=5) 5
-        .form__group
-          button.btn.btn--green#submitBtn(data-tour-id=`${tour.id}`) Submit Review
+    if userHasBooked
+      .add-review
+        form.review-form
+          h2.heading-secondary-alt Add a Review
+          .form__group
+            label.form__label(for='email') Your Review
+            textarea#review.form__input
+          .form__group 
+            label.form__label(for='rating') Your Rating
+            select#review-rating__select
+              option(value=1) 1
+              option(value=2) 2
+              option(value=3) 3
+              option(value=4) 4
+              option(value=5) 5
+          .form__group
+            button.btn.btn--green#submitBtn(data-tour-id=`${tour.id}`) Submit Review
 
 
   section.section-cta

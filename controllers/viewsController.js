@@ -19,7 +19,7 @@ exports.getTour = catchAsync(async (req, res, next) => {
   // 1. Get the data, for requested tour (including reviews and guides)
   const tour = await Tour.findOne({ slug: req.params.slug }).populate({
     path: 'reviews',
-    fields: 'review rating user '
+    fields: 'review rating user'
   });
 
   if (!tour) {
@@ -30,6 +30,7 @@ exports.getTour = catchAsync(async (req, res, next) => {
   // 3. Render the template using data from step 1.
   res.status(200).render('tour', {
     title: tour.name,
+    userHasBooked: req.user.userHasBooked,
     tour
   });
 });
@@ -54,7 +55,6 @@ exports.signUp = (req, res) => {
 
 exports.getMyTours = catchAsync(async (req, res, next) => {
   // 1. Find all bookings for user
-
   const bookings = await Booking.find({ user: req.user.id });
 
   const noToursContent = `You haven't booked any tours yet!`;
