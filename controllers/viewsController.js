@@ -2,6 +2,7 @@ const Tour = require('../models/tourModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const Booking = require('../models/bookingModel');
+const Review = require('../models/reviewModel');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
   // 1. Get tour data from collection
@@ -56,12 +57,15 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
 
   const bookings = await Booking.find({ user: req.user.id });
 
+  const noToursContent = `You haven't booked any tours yet!`;
+
   // 2. Find tours with the returned Ids
   const tourIDs = bookings.map(el => el.tour);
   const tours = await Tour.find({ _id: { $in: tourIDs } });
 
   res.status(200).render('overview', {
     title: 'My Tours',
+    noToursContent,
     tours
   });
 });
@@ -78,3 +82,16 @@ exports.contact = (req, res) => {
     title: 'Contact'
   });
 };
+
+exports.getMyReviews = catchAsync(async (req, res, next) => {
+  // 1. Find all reviews for user
+  const reviews = await Review.find({ user: req.user.id }).populate({
+    path: 'tour',
+    select: 'name'
+  });
+
+  res.status(200).render('myReviews', {
+    title: 'My Reviews',
+    reviews
+  });
+});

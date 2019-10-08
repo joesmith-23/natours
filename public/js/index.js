@@ -5,6 +5,7 @@ import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 import { signup } from './signup';
+import { reviewSubmit } from './reviewSubmit';
 
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
@@ -14,6 +15,7 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-settings');
 const bookBtn = document.getElementById('book-tour');
 const signupForm = document.querySelector('.signup-info');
+const reviewForm = document.querySelector('.review-form');
 
 // VALUES
 
@@ -83,5 +85,15 @@ if (bookBtn) {
     e.target.textContent = 'Processing...';
     const { tourId } = e.target.dataset;
     bookTour(tourId);
+  });
+}
+
+if (reviewForm) {
+  reviewForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const review = document.getElementById('review').value;
+    const rating = document.getElementById('review-rating__select').value;
+    const { tourId } = document.getElementById('submitBtn').dataset;
+    reviewSubmit(review, rating, tourId);
   });
 }
