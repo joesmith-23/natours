@@ -16,6 +16,17 @@ const userPasswordForm = document.querySelector('.form-user-settings');
 const bookBtn = document.getElementById('book-tour');
 const signupForm = document.querySelector('.signup-info');
 const reviewForm = document.getElementById('review-form');
+const ratings = document.querySelector('.ratings');
+const rating1 = document.getElementById('label-1');
+const rating2 = document.getElementById('label-2');
+const rating3 = document.getElementById('label-3');
+const rating4 = document.getElementById('label-4');
+const rating5 = document.getElementById('label-5');
+const radio1 = document.getElementById('rating-1');
+const radio2 = document.getElementById('rating-2');
+const radio3 = document.getElementById('rating-3');
+const radio4 = document.getElementById('rating-4');
+const radio5 = document.getElementById('rating-5');
 
 // VALUES
 
@@ -88,12 +99,88 @@ if (bookBtn) {
   });
 }
 
+// Very rough
+function handleCheck(e) {
+  if (e.target.id == 'label-1') {
+    rating1.classList.add('reviews__star--active');
+    rating2.classList.remove('reviews__star--active');
+    rating3.classList.remove('reviews__star--active');
+    rating4.classList.remove('reviews__star--active');
+    rating5.classList.remove('reviews__star--active');
+  }
+  if (e.target.id == 'label-2') {
+    rating1.classList.add('reviews__star--active');
+    rating2.classList.add('reviews__star--active');
+    rating3.classList.remove('reviews__star--active');
+    rating4.classList.remove('reviews__star--active');
+    rating5.classList.remove('reviews__star--active');
+  }
+  if (e.target.id == 'label-3') {
+    rating1.classList.add('reviews__star--active');
+    rating2.classList.add('reviews__star--active');
+    rating3.classList.add('reviews__star--active');
+    rating4.classList.remove('reviews__star--active');
+    rating5.classList.remove('reviews__star--active');
+  }
+  if (e.target.id == 'label-4') {
+    rating1.classList.add('reviews__star--active');
+    rating2.classList.add('reviews__star--active');
+    rating3.classList.add('reviews__star--active');
+    rating4.classList.add('reviews__star--active');
+    rating5.classList.remove('reviews__star--active');
+  }
+  if (e.target.id == 'label-5') {
+    rating1.classList.add('reviews__star--active');
+    rating2.classList.add('reviews__star--active');
+    rating3.classList.add('reviews__star--active');
+    rating4.classList.add('reviews__star--active');
+    rating5.classList.add('reviews__star--active');
+  }
+}
+
+if (ratings) {
+  // The radio buttons don't seem to have the 'checked' property - refactor this into CSS somehow
+  if (radio1.checked) {
+    rating1.classList.add('reviews__star--active');
+    rating2.classList.remove('reviews__star--active');
+    rating3.classList.remove('reviews__star--active');
+    rating4.classList.remove('reviews__star--active');
+    rating5.classList.remove('reviews__star--active');
+  } else if (radio2.checked) {
+    rating1.classList.add('reviews__star--active');
+    rating2.classList.add('reviews__star--active');
+    rating3.classList.remove('reviews__star--active');
+    rating4.classList.remove('reviews__star--active');
+    rating5.classList.remove('reviews__star--active');
+  } else if (radio3.checked) {
+    rating1.classList.add('reviews__star--active');
+    rating2.classList.add('reviews__star--active');
+    rating3.classList.add('reviews__star--active');
+    rating4.classList.remove('reviews__star--active');
+    rating5.classList.remove('reviews__star--active');
+  } else if (radio4.checked) {
+    rating1.classList.add('reviews__star--active');
+    rating2.classList.add('reviews__star--active');
+    rating3.classList.add('reviews__star--active');
+    rating4.classList.add('reviews__star--active');
+    rating5.classList.remove('reviews__star--active');
+  } else if (radio5.checked) {
+    rating1.classList.add('reviews__star--active');
+    rating2.classList.add('reviews__star--active');
+    rating3.classList.add('reviews__star--active');
+    rating4.classList.add('reviews__star--active');
+    rating5.classList.add('reviews__star--active');
+  } else {
+    ratings.addEventListener('mouseover', handleCheck);
+  }
+}
+
 if (reviewForm) {
   reviewForm.addEventListener('submit', e => {
     e.preventDefault();
     const review = document.getElementById('review').value;
-    const rating = document.getElementById('review-rating__select').value;
+    const rating = document.querySelector('input[type = radio]:checked').value;
     const { tourId } = document.getElementById('submitBtn').dataset;
-    reviewSubmit(review, rating, tourId);
+    // reviewSubmit(review, rating, tourId);
   });
 }

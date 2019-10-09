@@ -32,6 +32,9 @@ block content
         .user-view__form-container
           h2.heading-secondary.ma-bt-md= title
           .my-reviews
+            - if (!reviews)
+              h6 You haven't left any reviews yet
+
             each review in reviews
               .reviews__card.review-margin
                 a(href=`/tour/${review.tour.slug}`).reviews__link

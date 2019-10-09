@@ -31,7 +31,12 @@ block content
       .user-view__content
         .user-view__form-container
           h2.heading-secondary.ma-bt-md= title
-          each tour in tours 
-            +tourCard(tour)
-            br
+          if tours
+            each tour in tours 
+              +tourCard(tour)
+              br
+          else
+            h6 You haven't booked any tours yet!
+
+          
           

@@ -88,13 +88,41 @@ block content
             label.form__label(for='email') Your Review
             textarea(cols="40", rows="10")#review.form__input
           .form__group 
-            label.form__label(for='rating') Your Rating
-            select#review-rating__select
-              option(value=1) 1
-              option(value=2) 2
-              option(value=3) 3
-              option(value=4) 4
-              option(value=5) 5
+            label.form__label Your Rating
+
+            fieldset#review-rating__select.rating
+              span.ratings
+                input(type="radio" id='rating-1' name='rating' value='1' class='rating-star')
+                label(for='rating-1')  
+                  svg.reviews__star(id='label-1')
+                    use(xlink:href='/img/icons.svg#icon-star' id='label-1')
+                input(type="radio" id='rating-2' name='rating' value='2' class='rating-star')
+                label(for='rating-2')  
+                  svg.reviews__star(id='label-2')
+                    use(xlink:href='/img/icons.svg#icon-star' id='label-2') 
+                input(type="radio" id='rating-3' name='rating' value='3' class='rating-star')
+                label(for='rating-3')
+                  svg.reviews__star(id='label-3')
+                    use(xlink:href='/img/icons.svg#icon-star' id='label-3')   
+                input(type="radio" id='rating-4' name='rating' value='4' class='rating-star')
+                label(for='rating-4')  
+                  svg.reviews__star(id='label-4')
+                    use(xlink:href='/img/icons.svg#icon-star' id='label-4') 
+                input(type="radio" id='rating-5' name='rating' value='5' class='rating-star')
+                label(for='rating-5')  
+                  svg.reviews__star(id='label-5')
+                    use(xlink:href='/img/icons.svg#icon-star' id='label-5')
+ 
+
+
+
+
+            //- select#review-rating__select
+            //-   option(value=1) 1
+            //-   option(value=2) 2
+            //-   option(value=3) 3
+            //-   option(value=4) 4
+            //-   option(value=5) 5
           .form__group
             button.btn.btn--green#submitBtn(data-tour-id=`${tour.id}`) Submit Review
 
