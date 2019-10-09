@@ -82,11 +82,11 @@ block content
         +reviewCard(review)
     if userHasBooked
       .add-review
-        form.review-form
+        form#review-form.review-form
           h2.heading-secondary-alt Add a Review
           .form__group
             label.form__label(for='email') Your Review
-            textarea#review.form__input
+            textarea(cols="40", rows="10")#review.form__input
           .form__group 
             label.form__label(for='rating') Your Rating
             select#review-rating__select

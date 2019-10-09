@@ -3,6 +3,8 @@ import axios from 'axios';
 import { showAlert } from './alerts';
 
 export const reviewSubmit = async (review, rating, tourId) => {
+  console.log('got to review submit');
+  console.log(tourId);
   try {
     const res = await axios({
       method: 'POST',
@@ -20,11 +22,11 @@ export const reviewSubmit = async (review, rating, tourId) => {
       }, 1000);
     }
   } catch (err) {
+    console.log(err.response);
     if (err.response.data.error.code == 11000) {
       showAlert('error', 'Sorry, you can only review the tour once');
     } else {
       showAlert('error', err.response.data.message);
     }
-    console.log(err.response);
   }
 };

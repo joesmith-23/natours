@@ -8709,8 +8709,10 @@ function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.prev = 0;
-            _context.next = 3;
+            console.log('got to review submit');
+            console.log(tourId);
+            _context.prev = 2;
+            _context.next = 5;
             return (0, _axios.default)({
               method: 'POST',
               url: "http://localhost:3000/api/v1/tours/".concat(tourId, "/reviews"),
@@ -8720,7 +8722,7 @@ function () {
               }
             });
 
-          case 3:
+          case 5:
             res = _context.sent;
 
             if (res.data.status === 'success') {
@@ -8730,12 +8732,13 @@ function () {
               }, 1000);
             }
 
-            _context.next = 11;
+            _context.next = 13;
             break;
 
-          case 7:
-            _context.prev = 7;
-            _context.t0 = _context["catch"](0);
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context["catch"](2);
+            console.log(_context.t0.response);
 
             if (_context.t0.response.data.error.code == 11000) {
               (0, _alerts.showAlert)('error', 'Sorry, you can only review the tour once');
@@ -8743,14 +8746,12 @@ function () {
               (0, _alerts.showAlert)('error', _context.t0.response.data.message);
             }
 
-            console.log(_context.t0.response);
-
-          case 11:
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[2, 9]]);
   }));
 
   return function reviewSubmit(_x, _x2, _x3) {
@@ -9040,7 +9041,7 @@ var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-settings');
 var bookBtn = document.getElementById('book-tour');
 var signupForm = document.querySelector('.signup-info');
-var reviewForm = document.querySelector('.review-form'); // VALUES
+var reviewForm = document.getElementById('review-form'); // VALUES
 // DELEGATION
 
 if (mapBox) {
@@ -9171,7 +9172,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65292" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49453" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

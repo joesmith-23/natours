@@ -15,7 +15,7 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-settings');
 const bookBtn = document.getElementById('book-tour');
 const signupForm = document.querySelector('.signup-info');
-const reviewForm = document.querySelector('.review-form');
+const reviewForm = document.getElementById('review-form');
 
 // VALUES
 

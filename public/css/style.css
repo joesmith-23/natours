@@ -631,6 +631,11 @@ body {
   padding: 5rem 0;
 }
 
+.reviews__link {
+  text-decoration: none;
+  color: #777777;
+}
+
 .review-form {
   margin: 0 auto;
   max-width: 55rem;
