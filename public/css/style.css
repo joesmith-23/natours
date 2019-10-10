@@ -45,13 +45,64 @@ body {
 
 .filterBar {
   width: 100%;
-  height: 5rem;
-  background-color: red;
+  background-color: #d8d8d8;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+  border-top: solid 0.15rem #c4c4c4;
+  border-bottom: solid 0.15rem #c4c4c4;
+  margin-right: 1rem;
+}
+
+.filter__title {
+  padding-top: 0.25rem;
+  font-size: 1.8rem;
+  color: #555555;
+}
+
+.filter__group {
+  display: flex;
+  justify-content: center;
+}
+
+.filter__element {
+  display: block;
+  padding: 0rem 0.5rem 0.5rem 0.5rem;
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #555555;
+}
+
+.filter__element a:visited {
+  text-decoration: none;
+  color: #555555;
+}
+
+.filter__element:hover {
+  text-decoration: none;
+  color: #202020;
+}
+
+.tour-results__container {
+  padding: 2rem;
+}
+
+.tour-results__number {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .main {
   background-color: #f7f7f7;
-  padding: 8rem 6rem;
+  padding: 0rem 6rem;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;

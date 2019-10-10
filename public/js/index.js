@@ -27,10 +27,70 @@ const radio2 = document.getElementById('rating-2');
 const radio3 = document.getElementById('rating-3');
 const radio4 = document.getElementById('rating-4');
 const radio5 = document.getElementById('rating-5');
+const easyBtn = document.getElementById('easy');
+const mediumBtn = document.getElementById('medium');
+const difficultBtn = document.getElementById('difficult');
+const lowPrice = document.getElementById('lowPrice');
+const medPrice = document.getElementById('medPrice');
+const highPrice = document.getElementById('highPrice');
+const shortDur = document.getElementById('shortDur');
+const medDur = document.getElementById('medDur');
+const longDur = document.getElementById('longDur');
 
-// VALUES
+if (shortDur) {
+  shortDur.addEventListener('click', () => {
+    shortDur.setAttribute('href', '/?duration[lt]=5');
+  });
+}
 
-// DELEGATION
+if (medDur) {
+  medDur.addEventListener('click', () => {
+    medDur.setAttribute('href', '/?duration[gte]=5&duration[lt]=10');
+  });
+}
+
+if (longDur) {
+  longDur.addEventListener('click', () => {
+    longDur.setAttribute('href', '/?duration[gte]=10');
+  });
+}
+
+if (lowPrice) {
+  lowPrice.addEventListener('click', () => {
+    lowPrice.setAttribute('href', '/?price[lt]=500');
+  });
+}
+
+if (medPrice) {
+  medPrice.addEventListener('click', () => {
+    medPrice.setAttribute('href', '/?price[gte]=500&price[lt]=1500');
+  });
+}
+
+if (highPrice) {
+  highPrice.addEventListener('click', () => {
+    highPrice.setAttribute('href', '/?price[gte]=1500');
+  });
+}
+
+if (easyBtn) {
+  easyBtn.addEventListener('click', () => {
+    easyBtn.setAttribute('href', '/?difficulty=easy');
+  });
+}
+
+if (mediumBtn) {
+  mediumBtn.addEventListener('click', () => {
+    mediumBtn.setAttribute('href', '/?difficulty=medium');
+  });
+}
+
+if (difficultBtn) {
+  difficultBtn.addEventListener('click', () => {
+    difficultBtn.setAttribute('href', '/?difficulty=difficult');
+  });
+}
+
 if (mapBox) {
   const locations = JSON.parse(mapBox.dataset.locations);
   displayMap(locations);

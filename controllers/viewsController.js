@@ -17,6 +17,7 @@ exports.getOverview = catchAsync(async (req, res, next) => {
   const tours = await features.query;
 
   res.status(200).render('overview', {
+    results: tours.length,
     tours
   });
 });

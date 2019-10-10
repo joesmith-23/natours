@@ -9052,8 +9052,70 @@ var radio1 = document.getElementById('rating-1');
 var radio2 = document.getElementById('rating-2');
 var radio3 = document.getElementById('rating-3');
 var radio4 = document.getElementById('rating-4');
-var radio5 = document.getElementById('rating-5'); // VALUES
-// DELEGATION
+var radio5 = document.getElementById('rating-5');
+var easyBtn = document.getElementById('easy');
+var mediumBtn = document.getElementById('medium');
+var difficultBtn = document.getElementById('difficult');
+var lowPrice = document.getElementById('lowPrice');
+var medPrice = document.getElementById('medPrice');
+var highPrice = document.getElementById('highPrice');
+var shortDur = document.getElementById('shortDur');
+var medDur = document.getElementById('medDur');
+var longDur = document.getElementById('longDur');
+
+if (shortDur) {
+  shortDur.addEventListener('click', function () {
+    shortDur.setAttribute('href', '/?duration[lt]=5');
+  });
+}
+
+if (medDur) {
+  medDur.addEventListener('click', function () {
+    medDur.setAttribute('href', '/?duration[gte]=5&duration[lt]=10');
+  });
+}
+
+if (longDur) {
+  longDur.addEventListener('click', function () {
+    longDur.setAttribute('href', '/?duration[gte]=10');
+  });
+}
+
+if (lowPrice) {
+  lowPrice.addEventListener('click', function () {
+    lowPrice.setAttribute('href', '/?price[lt]=500');
+  });
+}
+
+if (medPrice) {
+  medPrice.addEventListener('click', function () {
+    medPrice.setAttribute('href', '/?price[gte]=500&price[lt]=1500');
+  });
+}
+
+if (highPrice) {
+  highPrice.addEventListener('click', function () {
+    highPrice.setAttribute('href', '/?price[gte]=1500');
+  });
+}
+
+if (easyBtn) {
+  easyBtn.addEventListener('click', function () {
+    easyBtn.setAttribute('href', '/?difficulty=easy');
+  });
+}
+
+if (mediumBtn) {
+  mediumBtn.addEventListener('click', function () {
+    mediumBtn.setAttribute('href', '/?difficulty=medium');
+  });
+}
+
+if (difficultBtn) {
+  difficultBtn.addEventListener('click', function () {
+    difficultBtn.setAttribute('href', '/?difficulty=difficult');
+  });
+}
 
 if (mapBox) {
   var locations = JSON.parse(mapBox.dataset.locations);
