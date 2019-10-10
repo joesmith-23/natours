@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get(
   '/',
-  bookingController.createBookingCheckout,
+  // bookingController.createBookingCheckout,
   authController.isLoggedIn,
   viewsController.getOverview
 );
@@ -22,6 +22,12 @@ router.get('/signup', authController.isLoggedIn, viewsController.signUp);
 router.get('/me', authController.protect, viewsController.getAccount);
 router.get('/my-tours', authController.protect, viewsController.getMyTours);
 router.get('/my-reviews', authController.protect, viewsController.getMyReviews);
+router.get(
+  '/successful-booking',
+  bookingController.createBookingCheckout,
+  authController.isLoggedIn,
+  viewsController.successfulBooking
+);
 
 // Informational pages
 router.get('/about', viewsController.about);

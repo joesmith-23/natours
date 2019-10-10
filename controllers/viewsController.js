@@ -3,13 +3,19 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const Booking = require('../models/bookingModel');
 const Review = require('../models/reviewModel');
+const APIFeatures = require('../utils/apiFeatures');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
-  // 1. Get tour data from collection
-  const tours = await Tour.find();
+  // BUILD QUERY
+  const features = new APIFeatures(Tour.find(), req.query)
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();
 
-  // 2. Build template
-  // 3. Render that template using tour data from step 1.
+  // EXECUTE QUERY
+  const tours = await features.query;
+
   res.status(200).render('overview', {
     tours
   });
@@ -63,7 +69,7 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
   const tourIDs = bookings.map(el => el.tour);
   const tours = await Tour.find({ _id: { $in: tourIDs } });
 
-  res.status(200).render('account-bookings', {
+  res.status(200).render('accountBookings', {
     title: 'My Tours',
     noToursContent,
     tours
@@ -90,8 +96,14 @@ exports.getMyReviews = catchAsync(async (req, res, next) => {
     select: 'name slug'
   });
 
-  res.status(200).render('account-reviews', {
+  res.status(200).render('accountReviews', {
     title: 'My Reviews',
     reviews
   });
 });
+
+exports.successfulBooking = (req, res) => {
+  res.status(200).render('successfulBooking', {
+    title: 'Successful Booking'
+  });
+};

@@ -181,6 +181,6 @@ if (reviewForm) {
     const review = document.getElementById('review').value;
     const rating = document.querySelector('input[type = radio]:checked').value;
     const { tourId } = document.getElementById('submitBtn').dataset;
-    // reviewSubmit(review, rating, tourId);
+    reviewSubmit(review, rating, tourId);
   });
 }
