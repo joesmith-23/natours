@@ -248,33 +248,39 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 });
 
 exports.hasUserBookedTour = catchAsync(async (req, res, next) => {
-  // 1. Get user
+  // 1. Get user if one exists
   const { user } = req;
-
-  // 2. Get tour
-  let tourId;
-  if (req.params.tourId) {
-    tourId = req.params.tourId;
-  } else {
-    const tour = await Tour.find({ slug: req.params.slug });
-    tourId = tour[0].id;
-  }
-
-  // 3. Get bookings for specific tour
-  const bookings = await Booking.find({ tour: tourId }).select(
-    '-paid -price -__v -createdAt -tour'
-  );
-
-  // 4. Check to see if user has booked tour
-  let userHasBooked = false;
-
-  bookings.forEach(el => {
-    if (el.user.id === user.id) {
-      userHasBooked = true;
+  if (user) {
+    // 2. Get tour
+    let tourId;
+    if (req.params.tourId) {
+      // eslint-disable-next-line prefer-destructuring
+      tourId = req.params.tourId;
+    } else {
+      const tour = await Tour.find({ slug: req.params.slug });
+      tourId = tour[0].id;
     }
-  });
 
-  req.user.userHasBooked = userHasBooked;
+    // 3. Get bookings for specific tour
+    const bookings = await Booking.find({ tour: tourId }).select(
+      '-paid -price -__v -createdAt -tour'
+    );
 
-  next();
+    // 4. Check to see if user has booked tour
+    let userHasBooked = false;
+
+    if (bookings) {
+      bookings.forEach(el => {
+        if (el.user.id === user.id) {
+          userHasBooked = true;
+        }
+      });
+    }
+
+    req.userHasBooked = userHasBooked;
+    next();
+  } else {
+    req.userHasBooked = false;
+    next();
+  }
 });

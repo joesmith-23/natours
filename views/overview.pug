@@ -25,6 +25,13 @@ block content
         a(href=`/` id='medDur').filter__element 5 to 10 days
         a(href=`/` id='longDur').filter__element 10+ days
         a(href=`/`).filter__element Clear
+    .filter
+      .filter__title Max Group Size
+      .filter__group
+        a(href=`/` id='smallGroup').filter__element <10 people
+        a(href=`/` id='medGroup').filter__element 10 to 20 people
+        a(href=`/` id='largeGroup').filter__element 20+ people
+        a(href=`/`).filter__element Clear
   main.main 
     .tour-results__container
       p.tour-results__number= `Number of tours found: ${results}`

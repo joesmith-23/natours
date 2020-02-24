@@ -27,19 +27,33 @@ const radio2 = document.getElementById('rating-2');
 const radio3 = document.getElementById('rating-3');
 const radio4 = document.getElementById('rating-4');
 const radio5 = document.getElementById('rating-5');
-const easyBtn = document.getElementById('easy');
-const mediumBtn = document.getElementById('medium');
-const difficultBtn = document.getElementById('difficult');
+const easy = document.getElementById('easy');
+const medium = document.getElementById('medium');
+const difficult = document.getElementById('difficult');
 const lowPrice = document.getElementById('lowPrice');
 const medPrice = document.getElementById('medPrice');
 const highPrice = document.getElementById('highPrice');
 const shortDur = document.getElementById('shortDur');
 const medDur = document.getElementById('medDur');
 const longDur = document.getElementById('longDur');
+const smallGroup = document.getElementById('smallGroup');
+const medGroup = document.getElementById('medGroup');
+const largeGroup = document.getElementById('largeGroup');
+
+// // Sets the class of an element inside state.active to show it's active
+// const active = elementName => {
+//   if (state.active.includes(elementName)) {
+//     elementName.classList.add('filter__element--active');
+//   }
+// };
+
+// state.active.forEach(el => (window.onload = active(el)));
+// // window.onload = state = JSON.parse(localStorage.getItem('state'));
 
 if (shortDur) {
   shortDur.addEventListener('click', () => {
     shortDur.setAttribute('href', '/?duration[lt]=5');
+    // active(shortDur);
   });
 }
 
@@ -73,21 +87,39 @@ if (highPrice) {
   });
 }
 
-if (easyBtn) {
-  easyBtn.addEventListener('click', () => {
-    easyBtn.setAttribute('href', '/?difficulty=easy');
+if (easy) {
+  easy.addEventListener('click', () => {
+    easy.setAttribute('href', '/?difficulty=easy');
   });
 }
 
-if (mediumBtn) {
-  mediumBtn.addEventListener('click', () => {
-    mediumBtn.setAttribute('href', '/?difficulty=medium');
+if (medium) {
+  medium.addEventListener('click', () => {
+    medium.setAttribute('href', '/?difficulty=medium');
   });
 }
 
-if (difficultBtn) {
-  difficultBtn.addEventListener('click', () => {
-    difficultBtn.setAttribute('href', '/?difficulty=difficult');
+if (difficult) {
+  difficult.addEventListener('click', () => {
+    difficult.setAttribute('href', '/?difficulty=difficult');
+  });
+}
+
+if (smallGroup) {
+  smallGroup.addEventListener('click', () => {
+    smallGroup.setAttribute('href', '/?maxGroupSize[lt]=10');
+  });
+}
+
+if (medGroup) {
+  medGroup.addEventListener('click', () => {
+    medGroup.setAttribute('href', '/?maxGroupSize[gte]=10&maxGroupSize[lt]=20');
+  });
+}
+
+if (largeGroup) {
+  largeGroup.addEventListener('click', () => {
+    largeGroup.setAttribute('href', '/?maxGroupSize[gte]=20');
   });
 }
 
@@ -159,7 +191,7 @@ if (bookBtn) {
   });
 }
 
-// Very rough
+// Very rough lol
 function handleCheck(e) {
   if (e.target.id == 'label-1') {
     rating1.classList.add('reviews__star--active');

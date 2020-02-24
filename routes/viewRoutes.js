@@ -24,8 +24,8 @@ router.get('/my-tours', authController.protect, viewsController.getMyTours);
 router.get('/my-reviews', authController.protect, viewsController.getMyReviews);
 router.get(
   '/successful-booking',
+  authController.protect,
   bookingController.createBookingCheckout,
-  authController.isLoggedIn,
   viewsController.successfulBooking
 );
 

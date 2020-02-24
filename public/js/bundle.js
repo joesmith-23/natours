@@ -9053,19 +9053,29 @@ var radio2 = document.getElementById('rating-2');
 var radio3 = document.getElementById('rating-3');
 var radio4 = document.getElementById('rating-4');
 var radio5 = document.getElementById('rating-5');
-var easyBtn = document.getElementById('easy');
-var mediumBtn = document.getElementById('medium');
-var difficultBtn = document.getElementById('difficult');
+var easy = document.getElementById('easy');
+var medium = document.getElementById('medium');
+var difficult = document.getElementById('difficult');
 var lowPrice = document.getElementById('lowPrice');
 var medPrice = document.getElementById('medPrice');
 var highPrice = document.getElementById('highPrice');
 var shortDur = document.getElementById('shortDur');
 var medDur = document.getElementById('medDur');
 var longDur = document.getElementById('longDur');
+var smallGroup = document.getElementById('smallGroup');
+var medGroup = document.getElementById('medGroup');
+var largeGroup = document.getElementById('largeGroup'); // // Sets the class of an element inside state.active to show it's active
+// const active = elementName => {
+//   if (state.active.includes(elementName)) {
+//     elementName.classList.add('filter__element--active');
+//   }
+// };
+// state.active.forEach(el => (window.onload = active(el)));
+// // window.onload = state = JSON.parse(localStorage.getItem('state'));
 
 if (shortDur) {
   shortDur.addEventListener('click', function () {
-    shortDur.setAttribute('href', '/?duration[lt]=5');
+    shortDur.setAttribute('href', '/?duration[lt]=5'); // active(shortDur);
   });
 }
 
@@ -9099,21 +9109,39 @@ if (highPrice) {
   });
 }
 
-if (easyBtn) {
-  easyBtn.addEventListener('click', function () {
-    easyBtn.setAttribute('href', '/?difficulty=easy');
+if (easy) {
+  easy.addEventListener('click', function () {
+    easy.setAttribute('href', '/?difficulty=easy');
   });
 }
 
-if (mediumBtn) {
-  mediumBtn.addEventListener('click', function () {
-    mediumBtn.setAttribute('href', '/?difficulty=medium');
+if (medium) {
+  medium.addEventListener('click', function () {
+    medium.setAttribute('href', '/?difficulty=medium');
   });
 }
 
-if (difficultBtn) {
-  difficultBtn.addEventListener('click', function () {
-    difficultBtn.setAttribute('href', '/?difficulty=difficult');
+if (difficult) {
+  difficult.addEventListener('click', function () {
+    difficult.setAttribute('href', '/?difficulty=difficult');
+  });
+}
+
+if (smallGroup) {
+  smallGroup.addEventListener('click', function () {
+    smallGroup.setAttribute('href', '/?maxGroupSize[lt]=10');
+  });
+}
+
+if (medGroup) {
+  medGroup.addEventListener('click', function () {
+    medGroup.setAttribute('href', '/?maxGroupSize[gte]=10&maxGroupSize[lt]=20');
+  });
+}
+
+if (largeGroup) {
+  largeGroup.addEventListener('click', function () {
+    largeGroup.setAttribute('href', '/?maxGroupSize[gte]=20');
   });
 }
 
@@ -9206,7 +9234,7 @@ if (bookBtn) {
     var tourId = e.target.dataset.tourId;
     (0, _stripe.bookTour)(tourId);
   });
-} // Very rough
+} // Very rough lol
 
 
 function handleCheck(e) {
@@ -9325,7 +9353,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49453" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52290" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

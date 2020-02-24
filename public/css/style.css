@@ -45,7 +45,14 @@ body {
 
 .filterBar {
   width: 100%;
-  background-color: #d8d8d8;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#7dd56f),
+    to(#28b487)
+  );
+  background-image: linear-gradient(to right, #7dd56f, #28b487);
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -56,15 +63,15 @@ body {
   justify-content: space-around;
   flex-direction: column;
   text-align: center;
-  border-top: solid 0.15rem #c4c4c4;
-  border-bottom: solid 0.15rem #c4c4c4;
+  border-top: solid 0.15rem white;
+  border-bottom: solid 0.15rem white;
   margin-right: 1rem;
 }
 
 .filter__title {
   padding-top: 0.25rem;
   font-size: 1.8rem;
-  color: #555555;
+  color: white;
 }
 
 .filter__group {
@@ -77,17 +84,17 @@ body {
   padding: 0rem 0.5rem 0.5rem 0.5rem;
   text-decoration: none;
   font-size: 1.4rem;
-  color: #555555;
+  color: white;
 }
 
 .filter__element a:visited {
   text-decoration: none;
-  color: #555555;
+  color: white;
 }
 
 .filter__element:hover {
   text-decoration: none;
-  color: #202020;
+  color: #777777;
 }
 
 .tour-results__container {
@@ -1246,6 +1253,7 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  min-width: 30rem;
 }
 .card__header {
   position: relative;
@@ -1339,6 +1347,19 @@ body {
   justify-self: end;
   -ms-flex-item-align: center;
   align-self: center;
+}
+
+@media only screen and (max-width: 42rem) {
+  .card-container {
+    max-width: 42rem;
+    min-width: 30rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .card {
+    margin: 0 0 2.5rem 0;
+  }
 }
 
 .error {

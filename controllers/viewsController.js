@@ -33,11 +33,10 @@ exports.getTour = catchAsync(async (req, res, next) => {
     return next(new AppError('There is no tour with that name.', 404));
   }
 
-  // 2. Build the template
-  // 3. Render the template using data from step 1.
+  // 2. Render the template using data from step 1.
   res.status(200).render('tour', {
     title: tour.name,
-    userHasBooked: req.user.userHasBooked,
+    userHasBooked: req.userHasBooked,
     tour
   });
 });
@@ -103,8 +102,8 @@ exports.getMyReviews = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.successfulBooking = (req, res) => {
+exports.successfulBooking = catchAsync(async (req, res) => {
   res.status(200).render('successfulBooking', {
     title: 'Successful Booking'
   });
-};
+});
