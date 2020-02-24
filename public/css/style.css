@@ -32,7 +32,7 @@ body {
   font-weight: 300;
   font-family: 'Lato', sans-serif;
   color: #777;
-  padding: 3rem;
+  /* padding: 3rem; */
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -43,9 +43,73 @@ body {
   flex-direction: column;
 }
 
+.filterBar {
+  width: 100%;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#7dd56f),
+    to(#28b487)
+  );
+  background-image: linear-gradient(to right, #7dd56f, #28b487);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+  border-top: solid 0.15rem white;
+  border-bottom: solid 0.15rem white;
+  margin-right: 1rem;
+}
+
+.filter__title {
+  padding-top: 0.25rem;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.filter__group {
+  display: flex;
+  justify-content: center;
+}
+
+.filter__element {
+  display: block;
+  padding: 0rem 0.5rem 0.5rem 0.5rem;
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.filter__element a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.filter__element:hover {
+  text-decoration: none;
+  color: #777777;
+}
+
+.tour-results__container {
+  padding: 2rem;
+}
+
+.tour-results__number {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
 .main {
   background-color: #f7f7f7;
-  padding: 8rem 6rem;
+  padding: 0rem 6rem;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -73,6 +137,19 @@ body {
 
 .ma-bt-lg {
   margin-bottom: 3.5rem !important;
+}
+
+.center-div {
+  margin: 25% 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.center-div a {
+  font-size: 16px;
 }
 
 .right {
@@ -127,6 +204,33 @@ body {
   letter-spacing: 0.1rem;
   line-height: 1.3;
   display: inline-block;
+}
+
+.test {
+  height: 3rem;
+  width: 3rem;
+  display: inline-block;
+  background-color: red;
+}
+
+.heading-secondary-alt {
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#777777),
+    to(#777777)
+  );
+  background-image: linear-gradient(to right, #777777, #777777);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 0.1rem;
+  line-height: 1.3;
+  display: inline-block;
+  padding-bottom: 2rem;
 }
 .heading-secondary--error {
   background-image: -webkit-gradient(
@@ -599,6 +703,46 @@ body {
   );
 }
 
+.add-review {
+  display: grid;
+  padding: 5rem 0;
+}
+
+.reviews__link {
+  text-decoration: none;
+  color: #777777;
+}
+
+.rating {
+  border: 0;
+}
+
+.rating input[type='radio'] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.rating label {
+  display: inline-block;
+  fill: #bbb;
+  /* background-image: url('/img/icons.svg#icon-star'); */
+}
+
+.rating input[type='radio']:checked + label {
+  fill: #55c57a;
+}
+
+.review-form {
+  margin: 0 auto;
+  max-width: 55rem;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  padding: 5rem 7rem;
+  border-radius: 5px;
+}
+
 .reviews {
   padding: 5rem 0;
   display: grid;
@@ -608,6 +752,18 @@ body {
   -ms-scroll-snap-type: x mandatory;
   scroll-snap-type: x mandatory;
 }
+
+.my-reviews {
+  display: flex;
+  padding: 3rem;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.review-margin {
+  margin: 3rem;
+}
+
 .reviews__card {
   width: 30rem;
   padding: 4rem;
@@ -674,6 +830,21 @@ body {
 .reviews__star--inactive {
   fill: #bbb;
 }
+
+/* [type='radio'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+[type='radio'] + img {
+  cursor: pointer;
+} */
+
+/* [type='radio']:checked + img {
+  outline: 2px solid #f00;
+} */
 
 .section-cta {
   margin-top: calc(0px - var(--section-rotate));
@@ -1095,6 +1266,7 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  min-width: 30rem;
 }
 .card__header {
   position: relative;
@@ -1188,6 +1360,19 @@ body {
   justify-self: end;
   -ms-flex-item-align: center;
   align-self: center;
+}
+
+@media only screen and (max-width: 42rem) {
+  .card-container {
+    max-width: 42rem;
+    min-width: 30rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .card {
+    margin: 0 0 2.5rem 0;
+  }
 }
 
 .error {

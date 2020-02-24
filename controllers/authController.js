@@ -2,6 +2,8 @@ const crypto = require('crypto');
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('./../models/userModel');
+const Tour = require('./../models/tourModel');
+const Booking = require('./../models/bookingModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const Email = require('./../utils/email');
@@ -139,7 +141,8 @@ exports.isLoggedIn = catchAsync(async (req, res, next) => {
       return next();
     }
 
-    // There is a logged in user so put the current user on res.locals
+    // There is a logged in user so put the current user on res.locals and req.user
+    req.user = currentUser;
     res.locals.user = currentUser;
     return next();
   }
@@ -241,4 +244,42 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
   // 4. Log user in, send JWT
   createSendToken(user, 200, req, res);
+});
+
+exports.hasUserBookedTour = catchAsync(async (req, res, next) => {
+  // 1. Get user if one exists
+  const { user } = req;
+  if (user) {
+    // 2. Get tour
+    let tourId;
+    if (req.params.tourId) {
+      // eslint-disable-next-line prefer-destructuring
+      tourId = req.params.tourId;
+    } else {
+      const tour = await Tour.find({ slug: req.params.slug });
+      tourId = tour[0].id;
+    }
+
+    // 3. Get bookings for specific tour
+    const bookings = await Booking.find({ tour: tourId }).select(
+      '-paid -price -__v -createdAt -tour'
+    );
+
+    // 4. Check to see if user has booked tour
+    let userHasBooked = false;
+
+    if (bookings) {
+      bookings.forEach(el => {
+        if (el.user.id === user.id) {
+          userHasBooked = true;
+        }
+      });
+    }
+
+    req.userHasBooked = userHasBooked;
+    next();
+  } else {
+    req.userHasBooked = false;
+    next();
+  }
 });
