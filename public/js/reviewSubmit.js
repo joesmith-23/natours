@@ -3,8 +3,6 @@ import axios from 'axios';
 import { showAlert } from './alerts';
 
 export const reviewSubmit = async (review, rating, tourId) => {
-  console.log('got to review submit');
-  console.log(tourId);
   try {
     const res = await axios({
       method: 'POST',
