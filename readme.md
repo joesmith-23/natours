@@ -6,4 +6,4 @@ Natours is a tour holiday application where users can sign up and book adventure
 
 It was built with Node.js Express, MongoDB, Mongoose and Pug. It includes a feature-rich API, advanced authorisation, emails sending, file uploading and manipulation and card payments with stripe.
 
-You can find it live here:
+You can find it live here: https://natours-smiffyj.herokuapp.com/
