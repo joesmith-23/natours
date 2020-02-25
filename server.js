@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 // Global Uncaught Exception error fix
 process.on('uncaughtException', err => {
   console.log('\nUNCAUGHT EXCEPTION: Shutting down...\n');
+  console.log(err);
   console.log(err.name, err.message);
   process.exit(1);
 });
